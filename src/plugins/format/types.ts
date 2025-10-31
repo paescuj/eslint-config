@@ -10,5 +10,5 @@ type AsyncFunction<T extends (...arguments_: any[]) => any> = (...arguments_: Pa
 export type DprintFormat = (code: string, filename: string, options: DprintOptions) => string;
 export type AsyncDprintFormat = AsyncFunction<DprintFormat>;
 
-export type ShfmtFormat = (code: string, filename: string) => string;
+export type ShfmtFormat = (code: string) => string;
 export type AsyncShfmtFormat = AsyncFunction<ShfmtFormat>;

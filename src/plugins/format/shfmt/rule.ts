@@ -29,8 +29,7 @@ const rule: Rule.RuleModule = {
 				const sourceCode = context.sourceCode.text;
 
 				try {
-					const formatted = format(sourceCode, context.filename);
-
+					const formatted = format(sourceCode);
 					reportDifferences(context, sourceCode, formatted);
 				}
 				catch (error) {

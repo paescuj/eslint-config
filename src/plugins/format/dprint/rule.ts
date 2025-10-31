@@ -40,7 +40,6 @@ const rule: Rule.RuleModule = {
 
 				try {
 					const formatted = format(sourceCode, context.filename, context.options[0] || {});
-
 					reportDifferences(context, sourceCode, formatted);
 				}
 				catch (error) {

@@ -1,11 +1,14 @@
 import type { AsyncShfmtFormat } from '../types.js';
+import { EOL } from 'node:os';
 import { execa } from 'execa';
 import { runAsWorker } from 'synckit';
 
-const format: AsyncShfmtFormat = async (code, filename) => {
-	const { stdout } = await execa`shfmt ${filename}`;
+const format: AsyncShfmtFormat = async (code) => {
+	const { stdout } = await execa({ input: code })`shfmt`;
 
-	return stdout;
+	if (!stdout) return '';
+
+	return `${stdout}${EOL}`;
 };
 
 runAsWorker(format);

@@ -2,16 +2,17 @@ import type { Linter } from 'eslint';
 import type { DprintOptions } from '../plugins/format/types.js';
 import type { FlatConfigItem } from '../types.js';
 import * as parserPlain from 'eslint-parser-plain';
+import { execa } from 'execa';
 import { GLOB_GRAPHQL, GLOB_HTML, GLOB_MARKDOWN, GLOB_STYLE } from '../globs.js';
 import pluginFormat from '../plugins/format/index.js';
 
-export function format(): FlatConfigItem {
+export async function format(): Promise<FlatConfigItem> {
 	const globalOptions: DprintOptions = {
 		useTabs: true,
 		lineWidth: 120,
 	};
 
-	return [
+	const config = [
 		{
 			name: 'paescuj/format',
 			plugins: {
@@ -23,18 +24,27 @@ export function format(): FlatConfigItem {
 		createDprintConfig('style', [GLOB_STYLE], { quotes: 'preferSingle', formatComments: true }),
 		createDprintConfig('markdown', [GLOB_MARKDOWN], { textWrap: 'always' }),
 		createDprintConfig('graphql', [GLOB_GRAPHQL], { formatComments: true }),
-
-		{
-			name: 'paescuj/format/shell',
-			files: ['**/*.sh'],
-			languageOptions: {
-				parser: parserPlain,
-			},
-			rules: {
-				'format/shfmt': ['error'],
-			},
-		},
 	];
+
+	try {
+		const { stdout } = await execa`shfmt --version`;
+
+		if (stdout) {
+			config.push({
+				name: 'paescuj/format/shell',
+				files: ['**/*.sh'],
+				languageOptions: {
+					parser: parserPlain,
+				},
+				rules: {
+					'format/shfmt': ['error'],
+				},
+			});
+		}
+	}
+	catch {}
+
+	return config;
 
 	function createDprintConfig(name: string, files: string[], languageOptions?: DprintOptions['languageOptions']): Linter.Config {
 		const dprintOptions: DprintOptions = {

@@ -9,6 +9,7 @@ export default defineConfig({
 		'format/dprint/worker': 'src/plugins/format/dprint/worker.ts',
 		'format/shfmt/worker': 'src/plugins/format/shfmt/worker.ts',
 	},
+	dts: true,
 	plugins: [
 		pluginReplace(
 			{

@@ -11,7 +11,7 @@ const plugins = [
 
 const pluginInfoUrl = 'https://plugins.dprint.dev/info.json';
 const schemaVersion = 4;
-const pluginsDir = '../src/plugins/dprint/dprint-plugins';
+const pluginsDir = '../src/plugins/format/dprint/plugins';
 
 const response = await fetch(pluginInfoUrl);
 const data = await response.json();

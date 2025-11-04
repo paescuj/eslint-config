@@ -2,4 +2,3 @@ injectWorkspacePackages: true
 
 onlyBuiltDependencies:
   - esbuild
-  - unrs-resolver

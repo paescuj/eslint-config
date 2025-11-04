@@ -58,7 +58,7 @@
 		"eslint-parser-plain": "0.1.1",
 		"eslint-plugin-antfu": "3.1.1",
 		"eslint-plugin-command": "3.3.1",
-		"eslint-plugin-import-x": "4.16.1",
+		"eslint-plugin-import-lite": "0.3.0",
 		"eslint-plugin-jsdoc": "61.1.11",
 		"eslint-plugin-jsonc": "2.21.0",
 		"eslint-plugin-n": "17.23.1",
@@ -84,7 +84,7 @@
 		"eslint": "^9.38.0",
 		"tsdown": "^0.15.12",
 		"typescript": "^5.9.3",
-		"unplugin-replace": "0.6.2",
+		"unplugin-replace": "^0.6.2",
 		"vitest": "^4.0.5"
 	}
 }

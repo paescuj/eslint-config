@@ -47,6 +47,7 @@ export function stylistic(): FlatConfigItem {
 					prev: '*',
 					next: ['multiline-block-like', 'multiline-expression'],
 				},
+				{ blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
 				{ blankLine: 'any', prev: ['case'], next: ['case', 'default'] },
 				{ blankLine: 'any', prev: ['import'], next: ['import'] },
 				{ blankLine: 'any', prev: ['export'], next: ['export'] },

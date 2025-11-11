@@ -12,7 +12,14 @@ beforeAll(async () => {
 
 	await fs.cp(from, target, { recursive: true });
 
-	await execa('pnpm', ['eslint', '--no-ignore', target, '--fix', target], {
+	await fs.writeFile(
+		path.join(target, 'eslint.config.js'),
+		`// @eslint-disable\nexport { default } from '@paescuj/eslint-config';\n`,
+	);
+
+	await execa('pnpm', ['build'], { stdio: 'pipe' });
+
+	await execa('pnpm', ['eslint', '--flag', 'v10_config_lookup_from_file', '--fix', target], {
 		stdio: 'pipe',
 	});
 });

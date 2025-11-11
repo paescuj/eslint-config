@@ -20,7 +20,7 @@
 		"eslintconfig"
 	],
 	"exports": {
-		".": "./dist/index.js",
+		".": "./dist/index.mjs",
 		"./package.json": "./package.json"
 	},
 	"files": [

@@ -18,8 +18,8 @@ export default defineConfig({
 					{
 						find: 'worker.ts',
 						replacement: (id, match) => {
-							if (id.includes('shfmt')) return 'format/shfmt/worker.js';
-							if (id.includes('dprint')) return 'format/dprint/worker.js';
+							if (id.includes('shfmt')) return 'format/shfmt/worker.mjs';
+							if (id.includes('dprint')) return 'format/dprint/worker.mjs';
 							return match[0];
 						},
 					},

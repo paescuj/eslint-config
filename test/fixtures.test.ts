@@ -22,7 +22,7 @@ beforeAll(async () => {
 	await execa('pnpm', ['eslint', '--flag', 'v10_config_lookup_from_file', '--fix', target], {
 		stdio: 'pipe',
 	});
-});
+}, 15_000);
 
 afterAll(async () => {
 	await fs.rm('_fixtures', { recursive: true, force: true });

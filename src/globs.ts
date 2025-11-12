@@ -1,4 +1,4 @@
-const GLOB_JS_TS_EXT = '?(c|m)[jt]s';
+export const GLOB_JS_TS_EXT = '?(c|m)[jt]s';
 
 export const GLOB_JS_TS = `**/*.${GLOB_JS_TS_EXT}`;
 export const GLOB_TS = '**/*.?(c|m)ts';
